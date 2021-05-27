@@ -3,9 +3,10 @@ import { REGISTER } from '../actions/authActions';
 import { LOGOUT } from '../actions/authActions';
 
 const intialState = {
-    user : {},
-    token : {},
-    isLoggedIn: false
+    user : JSON.parse(localStorage.getItem('user')) || {},
+    token : localStorage.getItem('token') || '',
+    isLoggedIn: localStorage.getItem('user') ? true :false,
+    //isLoggedIn : !!localStorage.getItem('user');
 }
 const authReducer = (state=intialState,action) =>{
     const {type, payload} = action;
@@ -14,14 +15,14 @@ const authReducer = (state=intialState,action) =>{
             //return new login state of user
             return {
                 ...state,
-                user: payload,
+                user: payload.user,
                 token: payload.token,
                 isLoggedIn: true
             }
         case REGISTER:
             return {
                 ...state,
-                user:payload,
+                user:payload.user,
                 token:payload.token,
                 isLoggedIn: true
             }
