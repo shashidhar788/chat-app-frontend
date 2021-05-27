@@ -3,7 +3,7 @@ import AuthService from '../../services/authService';
 
 export const LOGIN = 'LOGIN';
 export const REGISTER = 'REGISTER';
-
+export const LOGOUT = 'LOGOUT';
 //login action
 export const login = (params,history) => (dispatch) =>{
 
@@ -19,7 +19,7 @@ export const login = (params,history) => (dispatch) =>{
                 })
 
 };
-
+//REGISTER ACTION   
 export const register = (params,history) => dispatch =>{
 
     AuthService.register(params)
@@ -32,3 +32,12 @@ export const register = (params,history) => dispatch =>{
                     console.log("Auth Register Action Error",err);
                 })
 };
+
+//LOG OUT ACTION
+
+export const logout = (params,history) => dispatch =>{
+    
+    AuthService.logout()
+    dispatch({type:LOGOUT});
+    
+}

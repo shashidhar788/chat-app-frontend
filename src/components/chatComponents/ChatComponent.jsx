@@ -1,6 +1,7 @@
 import React from 'react';
 import {useSelector} from 'react-redux';
 import { Link } from 'react-router-dom';
+import Navbar from './Navigation';
 
 
 const notLoggedIn  = ()=>{
@@ -14,14 +15,14 @@ const notLoggedIn  = ()=>{
 }
 
 const Chat = ({...props}) => {
+    /* 
     const user = useSelector(state=>state.authReducer.user);
     const token = useSelector(state=>state.authReducer.token);
     const loginState = useSelector(state=>state.authReducer.isLoggedIn);
-    
+     */
     return(
         <div>
-            <h2> Main Chat Page</h2>
-            <p>welcome , {user.firstname}</p>
+            <Navbar />
             
         </div>
     );
