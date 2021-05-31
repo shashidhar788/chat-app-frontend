@@ -4,6 +4,7 @@ import AuthService from '../../services/authService';
 export const LOGIN = 'LOGIN';
 export const REGISTER = 'REGISTER';
 export const LOGOUT = 'LOGOUT';
+export const UPDATE_PROFILE = 'UPDATE_PROFILE';
 //login action
 export const login = (params,history) => (dispatch) =>{
 
@@ -41,3 +42,18 @@ export const logout = (params,history) => dispatch =>{
     dispatch({type:LOGOUT});
     
 }
+
+//update user
+export const updateProfile = (params) => dispatch =>{
+    console.log('from update action');
+    AuthService.updateProfileS(params)
+                .then( data => {
+                    
+                    console.log('from update action',data);
+
+                    dispatch({type:UPDATE_PROFILE, payload:data});
+                })
+                .catch(err=>{
+                    console.log("Update user Action Error",err);
+                })
+};

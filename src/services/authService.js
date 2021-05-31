@@ -30,7 +30,25 @@ const AuthService = {
         localStorage.removeItem('user');
         localStorage.removeItem('token');
 
-    }
+    },
+    
+    updateProfileS: (data) =>{
+        const headers = {
+            headers: {
+                'Content-Type' : 'application/json'
+            }
+        }
+        
+        return API.post('/users/update', data,headers)
+                    .then(({ data })=>{
+                        localStorage.setItem('user',JSON.stringify(data));
+                        return data;
+                    })
+                    .catch(err=>{
+                        console.log("Auth Register service error : " , err);
+                        throw err;
+                    })
+    },
 }
 
 const setHeadersAndStorage = ({user,token}) =>{

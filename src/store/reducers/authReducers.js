@@ -1,4 +1,4 @@
-import { LOGIN } from '../actions/authActions';
+import { LOGIN, UPDATE_PROFILE } from '../actions/authActions';
 import { REGISTER } from '../actions/authActions';
 import { LOGOUT } from '../actions/authActions';
 
@@ -32,6 +32,12 @@ const authReducer = (state=intialState,action) =>{
                 user:{},
                 token:'',
                 isLoggedIn: false
+            }
+        case UPDATE_PROFILE:
+            console.log("from reducer up: ",payload);
+            return {
+                ...state,
+                user: payload
             }
 
         default:

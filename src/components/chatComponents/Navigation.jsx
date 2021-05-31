@@ -1,13 +1,16 @@
 import React, { useState } from 'react';
 import { Fragment } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import {logout} from '../../store/actions/authActions';
+import { logout,updateProfile } from '../../store/actions/authActions';
 import Modal from './Modal';
+
 
 const Navbar = () =>{
     const user = useSelector(state=>state.authReducer.user);
     const [showModal,setShowModal] = useState(false);
+
     const dispatch = useDispatch();
+    const dispatch2 = useDispatch();
 
     const logoutClick = () =>{
         console.log("logging out user", user.firstname)
@@ -15,7 +18,7 @@ const Navbar = () =>{
 
     }
 
-    const updateProfile = () =>{
+    const updateProfileButton = () =>{
         setShowModal(!showModal);
     }
 
@@ -23,17 +26,24 @@ const Navbar = () =>{
     const [firstname,setFirstname] = useState(user.firstname);
     const [lastname,setLastname] = useState(user.lastname);
     const [email,setEmail] = useState(user.email);
-    const [password,setPassword] = useState(email.password);
+    const [password,setPassword] = useState(email.password || '');
     
     const submitForm = (e)=> {
         e.preventDefault();
-        const updateFormOjb = {firstname,lastname,email,password};
-        const formmData = new FormData();
-        for( const key in updateFormOjb){
-            FormData.append(key,updateFormOjb[key])
+        const updateFormObject = {firstname,lastname,email};
+        if(password.length>0) updateFormObject.password = password;
+        console.log(updateFormObject);
+
+        const formData = new FormData();
+
+        for( const key in updateFormObject ){
+            console.log(key,updateFormObject[key]);
+            formData.append(key,updateFormObject[key]);
         }
-        console.log("Update called", {firstname,lastname,email,password})
-        //dispatch(register({firstname,lastname,email,password},history));
+
+        console.log("Update called", formData);
+
+        dispatch(updateProfile(updateFormObject))
     }
 
     return (
@@ -45,7 +55,7 @@ const Navbar = () =>{
             </div>
             {/* Nav bar has a dropdown with logout option */}
             <div>
-                <button onClick={updateProfile}>Update profile</button>
+                <button onClick={updateProfileButton}>Update profile</button>
                 <button onClick={logoutClick}>Logout</button>
             </div>
             
@@ -87,15 +97,12 @@ const Navbar = () =>{
                             <input 
                             onChange={e=>setPassword(e.target.value)}
                             value={password}
-                            required="required"
                             type='text'
                             placeholder="Password"></input>
                         </div>
 
-                        <div>
-                            <input placeholder="Re-enter Password"></input>
-                        </div>
-                            <button>Update</button>
+                        
+                            <button onClick={submitForm}>Update</button>
                         </form>
                     
                     </Fragment>
