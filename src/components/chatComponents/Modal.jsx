@@ -10,7 +10,7 @@ const Modal = (props) => {
                     return child;
                 }
             
-        })
+        });
     }
     return (
         <div className="modal-mask modal-close">

@@ -32,7 +32,7 @@ const Navbar = () =>{
         e.preventDefault();
         const updateFormObject = {firstname,lastname,email};
         if(password.length>0) updateFormObject.password = password;
-        console.log(updateFormObject);
+        //console.log(updateFormObject);
 
         const formData = new FormData();
 
@@ -41,7 +41,7 @@ const Navbar = () =>{
             formData.append(key,updateFormObject[key]);
         }
 
-        console.log("Update called", formData);
+        //console.log("Update called", formData);
 
         dispatch(updateProfile(updateFormObject))
     }

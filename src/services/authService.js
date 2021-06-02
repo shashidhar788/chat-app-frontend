@@ -33,13 +33,13 @@ const AuthService = {
     },
     
     updateProfileS: (data) =>{
-        const headers = {
+        /* const headers = {
             headers: {
                 'Content-Type' : 'application/json'
-            }
-        }
+            } 
+        }*/
         
-        return API.post('/users/update', data,headers)
+        return API.post('/users/update', data,/* headers */)
                     .then(({ data })=>{
                         localStorage.setItem('user',JSON.stringify(data));
                         return data;

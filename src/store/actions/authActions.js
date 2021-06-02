@@ -1,10 +1,13 @@
 
 import AuthService from '../../services/authService';
 
-export const LOGIN = 'LOGIN';
+import {LOGIN, REGISTER, LOGOUT, UPDATE_PROFILE} from './actionTypes';
+
+/* export const LOGIN = 'LOGIN';
 export const REGISTER = 'REGISTER';
 export const LOGOUT = 'LOGOUT';
-export const UPDATE_PROFILE = 'UPDATE_PROFILE';
+export const UPDATE_PROFILE = 'UPDATE_PROFILE'; */
+
 //login action
 export const login = (params,history) => (dispatch) =>{
 
