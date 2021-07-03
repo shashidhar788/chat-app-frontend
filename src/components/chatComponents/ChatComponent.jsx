@@ -42,7 +42,7 @@ const Chat = ({...props}) => {
         <div>
             <Navbar />
             <p> Data</p>
-            <Friend />
+            
             <Messenger />
             <FriendList />
             
