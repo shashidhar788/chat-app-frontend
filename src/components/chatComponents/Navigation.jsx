@@ -48,7 +48,7 @@ const Navbar = () =>{
 
     return (
         <div id="navbar">
-            <h2>Chat.io Main page</h2>
+            <h2>Chat.io Nav page</h2>
             <div id="profile=menu">
                 <img src={user.avatar} alt= "Avatar" />
                 <p> Logged in as, {user.firstname}</p>

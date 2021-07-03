@@ -1,3 +1,20 @@
 .App {
   text-align: center;
 }
+
+body{
+
+}
+
+.m-0{
+  margin: 0;
+}
+
+.mb-1{
+  margin-bottom: 1rem;
+
+}
+
+.mb-2{
+  margin-bottom: 2rem;
+}

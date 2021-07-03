@@ -1,7 +1,13 @@
-import React from 'react';
-import {useSelector} from 'react-redux';
+import React,{useEffect} from 'react';
+import {useSelector,useDispatch} from 'react-redux';
 import { Link } from 'react-router-dom';
 import Navbar from './Navigation';
+
+import { fetchChats } from '../../store/actions/chatActions';
+
+import Friend from './ChatScreen/Friend';
+import FriendList from './ChatScreen/FriendList';
+import Messenger from './ChatScreen/Messenger';
 
 
 const notLoggedIn  = ()=>{
@@ -14,15 +20,31 @@ const notLoggedIn  = ()=>{
     )
 }
 
+
 const Chat = ({...props}) => {
     /* 
     const user = useSelector(state=>state.authReducer.user);
     const token = useSelector(state=>state.authReducer.token);
     const loginState = useSelector(state=>state.authReducer.isLoggedIn);
      */
+
+    const dispatch = useDispatch();
+    const user = useSelector(state=> state.authReducer.user);
+
+    useEffect(()=>{
+        dispatch(fetchChats())
+        .then(res=>console.log("res from chat compoonent:" , res))
+        .catch(err=>console.log("err from chat componenet: " , err));
+
+    })
+
     return(
         <div>
             <Navbar />
+            <p> Data</p>
+            <Friend />
+            <Messenger />
+            <FriendList />
             
         </div>
     );
