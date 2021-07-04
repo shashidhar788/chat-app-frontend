@@ -1,8 +1,10 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import Message from './Message';
+import Message from './Message/Message';
 
 import './MessageBox.scss';
+
+
 
 const MessageBox = ({chat}) => {
 
@@ -13,7 +15,7 @@ const MessageBox = ({chat}) => {
             {
                 chat.Messages.map((message,index)=>{
 
-                    return <Message chat={chat} user={user} message={message} index={index} key={message.id}/>
+                    return <Message id = "message" chat={chat} user={user} message={message} index={index} key={message.id}/>
                 })
             }
             
