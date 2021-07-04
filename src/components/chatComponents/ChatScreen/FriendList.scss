@@ -6,6 +6,7 @@
     padding: 15px 0;
     background-color: #fff;
     margin-bottom: 1rem;
+    border: solid $bg-main 1px;
 
     @media (min-width: 800px) {
         flex-grow: 1;

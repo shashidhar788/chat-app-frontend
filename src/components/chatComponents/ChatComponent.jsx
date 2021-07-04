@@ -39,14 +39,20 @@ const Chat = ({...props}) => {
     })
 
     return(
-        <div>
-            <Navbar />
-            <p> Data</p>
-            
-            <Messenger />
+        <>
+        <Navbar />
+
+        <div style={{display:"flex"}} >
             <FriendList />
+            <Messenger />
             
         </div>
+        
+        </>
+        
+
+        
+        
     );
 }
 

@@ -1,10 +1,12 @@
 @import './../../../assets/scss/variables';
 
 #messenger {
+
     justify-content: space-between;
     padding: 15px;
     flex-grow: 2;
     background-color: white;
+    border: solid red 1px;
 
     #messenger-wrap {
         display: flex;

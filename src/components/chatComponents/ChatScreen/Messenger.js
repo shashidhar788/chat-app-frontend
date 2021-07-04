@@ -18,7 +18,7 @@ const Messenger = () =>{
     }
     return (
         <div id="messenger" className="shadow-light">
-            Messenger
+            
             {
                 isChatActive()
                 ? <div id="messenger-wrap" > 
