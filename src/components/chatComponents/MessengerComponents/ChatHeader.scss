@@ -1,0 +1,48 @@
+@import "../../../assets/scss/variables.scss";
+
+#chatter {
+    overflow-y: auto;
+    display: flex;
+    text-align: left;
+    margin-top: 10px;
+
+    h3 {
+        margin: 0 10px 0 0;
+    }
+
+    .chatter-info {
+        display: flex;
+        margin-right: 10px;
+        min-width: 80px;
+        padding: 10px;
+    }
+
+    .chatter-status {
+        display: flex;
+        align-items: center;
+    }
+    
+    .online-status {
+        &.offline::after {
+            background-color: $danger;
+            border-color: #C42C3B;
+            /* box-shadow: 0px 0px 4px 1px $danger; */
+            color: $danger;
+        }
+        &.online::after {
+            background-color: $success;
+            border-color: #78D965;
+            box-shadow: 0px 0px 4px 1px $success;
+        }
+ 
+        &::after {
+            content: ' ';
+            display: inline-block;
+            width: 5px;
+            height: 5px;
+            margin-right: 10px;
+            border: 1px solid #000;
+            border-radius: 5px;
+        }
+    }
+}

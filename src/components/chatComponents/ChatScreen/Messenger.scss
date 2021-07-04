@@ -1,4 +1,4 @@
-@import "../../../assets/scss/variables.scss";
+@import './../../../assets/scss/variables';
 
 #messenger {
     justify-content: space-between;
@@ -72,7 +72,7 @@
     }
 
     #delete-chat {
-        background-color: yellowgreen;
+        background-color: $success;
         border: none;
         padding: 5px;
         width: 70px;
@@ -91,7 +91,7 @@
             align-items: center;
 
             button {
-                background-color: yellowgreen;
+                background-color: $success;
                 border-radius: 10px;
                 border: none;
                 height: 25px;

@@ -5,7 +5,7 @@ import './Friend.scss';
 import { userStatus } from '../../../utils/helpers';
 
 
-const Friend = ({chat}) =>{
+const Friend = ({chat,click}) =>{
     //console.log("from friends component" , chat);
     const currentChat = useSelector(state => state.chatReducer.currentChat);
 
@@ -21,7 +21,7 @@ const Friend = ({chat}) =>{
 
     }
     return (
-        <div className={`friend-list ${isChatOpened()}`}>
+        <div  onClick={click} className={`friend-list ${isChatOpened()}`}>
             <div className="friend-info">
                  <img width='40' height='40' alt = 'User avatar' src="https://www.svgrepo.com/show/36350/user.svg" style={{border:"1px"}}/>                 
                 <h4 className='m-0'><span>{chat.Users[0].firstname} {chat.Users[0].lastname}</span></h4>
