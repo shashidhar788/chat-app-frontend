@@ -1,13 +1,58 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './MessageInput.scss';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-const MessageInput = () => {
+import { useSelector } from 'react-redux';
+const MessageInput = ({chat}) => {
+
+
+    const [message,setMessage] = useState('');
+    const [image, setImage] = useState('');
+
+
+    const user = useSelector(state=> state.authReducer.user);
+
+
+    const handleChange= (e) =>{
+        e.preventDefault();
+
+        const value = e.target.value;
+        setMessage(value);
+
+        //also need to notify other users that this user is typing something
+         
+    }
+
+    const handleKeyDown = (e, imageUpload) => {
+        if(e.key === 'Enter') sendMessage(imageUpload);
+        
+        
+    }
+
+    const sendMessage = (imageUpload) =>{
+        
+        if(message.length <1 && !imageUpload ) {
+            // this prevents empty messages
+            return ;
+        }  
+        const msg = {
+            type : imageUpload? 'image' : 'text',
+            fromUserId : user.id,
+            toUserId : chat.Users.map(user=>user.id),
+            chatId: chat.id,
+            message: imageUpload ? image: message
+        }
+
+        setMessage('')
+        setImage('');
+        //send message through sockets
+    }
+
     return (
         <div id="input-container">
             <div id="message-input">
-                <input type='text' placeholder="Type your message here" />
-                <FontAwesomeIcon  className='fa-icon' icon={['far','smile']}></FontAwesomeIcon>
+                <input type='text' onChange={e=>handleChange(e)} onKeyDown={e=>handleKeyDown(e)} placeholder="Type your message here" />
+                <FontAwesomeIcon  className='fa-icon' icon={['far','smile']}/>
             </div>
             {/* <h4>Chat input goes here</h4> */}
         </div>
