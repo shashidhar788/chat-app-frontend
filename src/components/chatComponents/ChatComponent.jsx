@@ -9,6 +9,10 @@ import Friend from './ChatScreen/Friend';
 import FriendList from './ChatScreen/FriendList';
 import Messenger from './ChatScreen/Messenger';
 
+//socket
+
+import  useSocket  from './hooks/socketConnectHook';
+
 
 const notLoggedIn  = ()=>{
     return (
@@ -30,6 +34,8 @@ const Chat = ({...props}) => {
 
     const dispatch = useDispatch();
     const user = useSelector(state=> state.authReducer.user);
+
+    useSocket(user,dispatch);
 
     useEffect(()=>{
         dispatch(fetchChats())
