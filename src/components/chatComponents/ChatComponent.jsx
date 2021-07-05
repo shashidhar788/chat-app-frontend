@@ -37,12 +37,14 @@ const Chat = ({...props}) => {
 
     useSocket(user,dispatch);
 
+    /* 
+    Moving this to custom hook
     useEffect(()=>{
         dispatch(fetchChats())
         .then(res=>console.log("res from chat compoonent:" , res))
         .catch(err=>console.log("err from chat componenet: " , err));
 
-    })
+    }) */
 
     return(
         <>

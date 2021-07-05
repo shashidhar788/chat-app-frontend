@@ -1,5 +1,8 @@
 import { FETCH_CHATS,SET_CURRENT_CHAT } from "../actions/chatActions";
 
+
+import { FRIENDS_ONLINE, FRIEND_ONLINE, FRIEND_OFFLINE } from "../actions/chatActions";
+
 const initialState = {
     chats:[],
     currentChat:{}
@@ -21,6 +24,110 @@ const chatReducer = (state=initialState,action)=>{
                 ...state,
                 currentChat:payload
             }
+
+        case FRIENDS_ONLINE:{
+            //make an new copy of chats's array with status of each friend as online
+            const chatsCopy = state.chats.map(chat =>{
+                return {
+                    ...chat,
+                    Users: chat.Users.map(user=>{
+                        if(payload.includes(user.id)){
+                            return {
+                                ...user,
+                                status: 'online'
+                            }
+                        }
+
+                        return user;
+                    })
+                }
+            })
+
+            return {
+                ...state,
+                chats: chatsCopy
+            }
+        }
+        
+        case FRIEND_ONLINE: {
+            let currentChatCopy = { ...state.currentChat}
+            const chatsCopy = state.chats.map(chat => {
+                    const Users = chat.Users.map(user=>{
+                        // we are getting a user object as payload
+                        if(user.id===parseInt(payload.id)){
+                            return {
+                                ...user,
+                                status: 'online'
+                            }
+                        }
+
+                        return user;
+                    })
+
+                    if(chat.id === currentChatCopy.id){
+                        currentChatCopy ={
+                            ...currentChatCopy,
+                            Users
+                        }
+                    }
+
+                    return {
+                        ...chat,
+                        Users
+                    }
+                
+                }
+            );
+
+            return {
+                ...state,
+                chats: chatsCopy,
+                currentChat: currentChatCopy
+
+            }
+
+        }
+
+        case FRIEND_OFFLINE: {
+            let currentChatCopy = { ...state.currentChat}
+            const chatsCopy = state.chats.map(chat => {
+                    const Users = chat.Users.map(user=>{
+                        // we are getting a user object as payload
+                        if(user.id===parseInt(payload.id)){
+                            return {
+                                ...user,
+                                status: 'offline'
+                            }
+                        }
+
+                        return user;
+                    })
+
+                    if(chat.id === currentChatCopy.id){
+                        currentChatCopy ={
+                            ...currentChatCopy,
+                            Users
+                        }
+                    }
+
+                    return {
+                        ...chat,
+                        Users
+                    }
+                
+                }
+            );
+
+            return {
+                ...state,
+                chats: chatsCopy,
+                currentChat: currentChatCopy
+
+            }
+
+        }
+
+
         default:{
             return state;
             

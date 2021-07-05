@@ -1,10 +1,18 @@
 import { LOGOUT, LOGIN, UPDATE_PROFILE,REGISTER } from '../actions/actionTypes';
 
 const intialState = {
-    user : JSON.parse(localStorage.getItem('user')) || {},
+    /* user : JSON.parse(localStorage.getItem('user')) || {},
     token : localStorage.getItem('token') || '',
-    isLoggedIn: localStorage.getItem('user') ? true :false,
+    isLoggedIn: localStorage.getItem('user') ? true :false, */
     //isLoggedIn : !!localStorage.getItem('user');
+
+    //tocheck multiple sockets
+
+    user: {} ,
+    token : '',
+    isLoggedIn: false
+
+    
 }
 const authReducer = (state=intialState,action) =>{
     const {type, payload} = action;
