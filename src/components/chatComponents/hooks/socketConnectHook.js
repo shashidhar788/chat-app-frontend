@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import SocketIOClient from 'socket.io-client';
 
-import {fetchChats, getOnlineFriends, isFriendOffline, isFriendOnline} from '../../../store/actions/chatActions';
+import {fetchChats, getOnlineFriends, isFriendOffline, isFriendOnline, setSocket} from '../../../store/actions/chatActions';
 
 function useSocket(user,dispatch){
     useEffect(()=>{
@@ -12,6 +12,10 @@ function useSocket(user,dispatch){
             console.log("res from chat compoonent:" , res);
 
             const socket = SocketIOClient.connect('http://127.0.0.1:3001')
+
+            //saves the socket to reducer state which can be grabbed from message input
+            dispatch(setSocket(socket));
+
 
             console.log("from socket hook trying to join" )
             

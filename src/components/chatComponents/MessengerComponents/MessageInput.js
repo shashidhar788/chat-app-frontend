@@ -11,6 +11,8 @@ const MessageInput = ({chat}) => {
 
 
     const user = useSelector(state=> state.authReducer.user);
+    //grabbing socket from the state that is saved
+    const socket = useSelector(state=> state.chatReducer.socket);
 
 
     const handleChange= (e) =>{
@@ -37,7 +39,7 @@ const MessageInput = ({chat}) => {
         }  
         const msg = {
             type : imageUpload? 'image' : 'text',
-            fromUserId : user.id,
+            fromUser : user,
             toUserId : chat.Users.map(user=>user.id),
             chatId: chat.id,
             message: imageUpload ? image: message
@@ -45,7 +47,9 @@ const MessageInput = ({chat}) => {
 
         setMessage('')
         setImage('');
+
         //send message through sockets
+        socket.emit('message',msg);
     }
 
     return (
