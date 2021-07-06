@@ -4,6 +4,7 @@ export const SET_CURRENT_CHAT = 'SET_CURRENT_CHAT';
 export const FRIENDS_ONLINE = 'FRIENDS_ONLINE';
 export const FRIEND_ONLINE = 'FRIEND_ONLINE';
 export const FRIEND_OFFLINE = 'FRIEND_OFFLINE';
+export const MESSAGE_RECEIVED = 'MESSAGE_RECEIVED'
 
 export const SET_SOCKET = 'SET_SOCKET';
 
@@ -55,4 +56,9 @@ export const setCurrentChat = (chat) =>dispatch=> {
 
 export const setSocket = (socket) =>dispatch=> {
     dispatch({type: SET_SOCKET, payload: socket})
+}
+
+
+export const message_received = (message,userId) => dispatch =>{
+    dispatch({type: MESSAGE_RECEIVED, payload: {message,userId}})
 }

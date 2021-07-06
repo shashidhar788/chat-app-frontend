@@ -4,7 +4,7 @@ const intialState = {
     user : JSON.parse(localStorage.getItem('user')) || {},
     token : localStorage.getItem('token') || '',
     isLoggedIn: localStorage.getItem('user') ? true :false,
-    isLoggedIn : !localStorage.getItem('user')
+    //isLoggedIn : !localStorage.getItem('user')
 
     //tocheck multiple sockets
     
