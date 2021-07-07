@@ -26,9 +26,23 @@ const MessageInput = ({chat}) => {
     }
 
     const handleKeyDown = (e, imageUpload) => {
-        if(e.key === 'Enter') sendMessage(imageUpload);
         
         
+        if(e.key === 'Enter'){
+
+
+            sendMessage(imageUpload);
+            setMessage(msg=>{
+                console.log("setting message to empty string")
+                return '';
+            
+            });
+            setImage(img => '');
+            
+            e.target.value = '';
+        } 
+        
+       
     }
 
     const sendMessage = (imageUpload) =>{
@@ -45,18 +59,22 @@ const MessageInput = ({chat}) => {
             message: imageUpload ? image: message
         }
 
-        setMessage('')
-        setImage('');
+        
 
         //send message through sockets
         socket.emit('message',msg);
+
+
+        setMessage(msg=>'');
+        setImage(img => '');
     }
 
     return (
         <div id="input-container">
             <div id="message-input">
-                <input type='text' onChange={e=>handleChange(e)} onKeyDown={e=>handleKeyDown(e)} placeholder="Type your message here" />
-                <FontAwesomeIcon  className='fa-icon' icon={['far','smile']}/>
+                <input type='text'  onChange={e=>handleChange(e)} onKeyDown={e=>handleKeyDown(e)} placeholder="Type your message here" />
+                <button>Send</button>
+                {/* <FontAwesomeIcon  className='fa-icon' icon={['far','smile']}/> */}
             </div>
             {/* <h4>Chat input goes here</h4> */}
         </div>
