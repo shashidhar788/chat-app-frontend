@@ -4,8 +4,11 @@ import store from '../store';
 import { logout } from '../store/actions/authActions';
 
 const API  = axios.create({
-    baseURL:'http://127.0.0.1:3001',
+//    baseURL:'https://db-for-fastext.herokuapp.com',
+    baseURL:'http://localhost:3001',
+
     headers:{
+
         'Accept': 'application/json',
         'Authorization': `Bearer ${localStorage.getItem('token') || ''}`
     }
@@ -31,7 +34,7 @@ API.interceptors.response.use(
 
         }
         catch (err) {
-            console.log('error in api.js')
+            console.log('error in api.js',err)
             throw err
         }
         

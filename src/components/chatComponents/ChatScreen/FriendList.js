@@ -1,11 +1,26 @@
-import React from 'react';
+import React, { useState, Fragment } from 'react';
 import { useSelector,useDispatch } from 'react-redux';
 import './FriendList.scss';
 import Friend from './Friend'
 import { setCurrentChat } from '../../../store/actions/chatActions';
+import Modal from '../Modal';
 
 const FriendList = () =>{
     const dispatch = useDispatch();
+
+
+    const [showFriendsModal, setShowFriendsModal] = useState(false);
+    const [suggestions,setSuggestions] = useState([]);
+
+    //to search for
+    const searchFriends =(e ) =>{
+
+    }
+
+    const addNewFriend = (id) =>{
+
+    }
+
     const chats = useSelector(state=>state.chatReducer.chats)
     console.log("From friends list componenet : " , chats);
 
@@ -35,6 +50,32 @@ const FriendList = () =>{
                     : <p id="no-chat">No friends found</p>
                 }
             </div>
+
+            {
+                showFriendsModal && 
+                <Modal>
+                    <Fragment key='header'>
+                        <h3 className="m-0"> Create new chat</h3>
+
+                    </Fragment>
+                    <Fragment key='body'>
+                        
+                        <p> Find friends by searching for them</p>
+
+                        <input
+                            onInput={e=>searchFriends(e)}
+                            type='text'
+                            placeholder="search"
+
+
+                        >
+                        </input>
+                    </Fragment>
+                    <Fragment key='footer'>
+                        
+                    </Fragment>
+                </Modal>
+            }
         </div>
     )
 }

@@ -11,7 +11,8 @@ function useSocket(user,dispatch){
 
             console.log("res from chat compoonent:" , res);
 
-            const socket = SocketIOClient.connect('http://127.0.0.1:3001')
+//            const socket = SocketIOClient.connect('https://db-for-fastext.herokuapp.com/')
+            const socket = SocketIOClient.connect('http://localhost:3001')
 
             //saves the socket to reducer state which can be grabbed from message input
             dispatch(setSocket(socket));
