@@ -4,6 +4,8 @@ import './FriendList.scss';
 import Friend from './Friend'
 import { setCurrentChat } from '../../../store/actions/chatActions';
 import Modal from '../Modal';
+import ChatService from '../../../services/chatService';
+
 
 const FriendList = () =>{
     const dispatch = useDispatch();
@@ -12,12 +14,27 @@ const FriendList = () =>{
     const [showFriendsModal, setShowFriendsModal] = useState(false);
     const [suggestions,setSuggestions] = useState([]);
 
-    //to search for
-    const searchFriends =(e ) =>{
+    //to search for friends
+    const searchFriends =(e) =>{
+
+        console.log("calling serach friends:  ", e.target.value)
+        ChatService.searchUsers(e.target.value)
+        .then(data=>{
+            console.log("data from serachUsers" , data);
+
+            setSuggestions(data);
+
+        })
+        .catch(err=>{
+            console.log("some error from Friendlist searchusers", err);
+            throw err;
+        })
 
     }
 
     const addNewFriend = (id) =>{
+        //should add this to the backend and update state
+        
 
     }
 
@@ -36,7 +53,7 @@ const FriendList = () =>{
                 <h3 className="m-0">
                     Friends
                 </h3>
-                <button> Add </button>
+                <button onClick={()=>setShowFriendsModal(prevState=>!prevState)}> Add </button>
             </div>
 
             <hr /> 
@@ -53,7 +70,7 @@ const FriendList = () =>{
 
             {
                 showFriendsModal && 
-                <Modal>
+                <Modal click={()=>setShowFriendsModal(false)}>
                     <Fragment key='header'>
                         <h3 className="m-0"> Create new chat</h3>
 
@@ -63,13 +80,30 @@ const FriendList = () =>{
                         <p> Find friends by searching for them</p>
 
                         <input
-                            onInput={e=>searchFriends(e)}
+                            onInput={(e)=>searchFriends(e)}
                             type='text'
-                            placeholder="search"
+                            placeholder="search for friends"
+
+                        />
+                        {
+                            suggestions && suggestions.length>1 && 
+                            <div >
+                            {
 
 
-                        >
-                        </input>
+                            suggestions.map(user=>{
+
+                                return <div className="suggestion"> 
+                                    <p>{user.firstname} {user.lastname}</p>
+                                    <button onClick={()=>addNewFriend(user.id)}>Add</button>
+                                </div>
+                            })}
+
+                            </div>
+
+                        }
+                        
+                        
                     </Fragment>
                     <Fragment key='footer'>
                         

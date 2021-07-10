@@ -19,6 +19,23 @@ const ChatService = {
         })
         .catch(e=> {throw e;})
     }
+    ,
+    searchUsers: (term)=>{
+
+        
+        return API.get('/users/search',{
+            params:{
+                term
+            }
+        })
+        .then( ({data}) =>{
+            return data;
+        }).catch(err=>{
+            console.log("err from chatServcie search", err);
+            
+        })
+
+    }
 }
 
 
