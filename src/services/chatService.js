@@ -35,7 +35,23 @@ const ChatService = {
             
         })
 
+    },
+
+    createChat: (userId)=>{
+        console.log("creating a chat with userid" , userId);
+
+        return API.post('/chats/create',{"partnerID":userId})
+        .then( ({data}) =>{
+            console.log("created new chat from services" , data);
+            return data;
+        }).catch(err=>{
+            console.log("err from chatServcie search", err);
+            
+        })
+
     }
+
+
 }
 
 

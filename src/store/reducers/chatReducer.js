@@ -1,4 +1,4 @@
-import { FETCH_CHATS,MESSAGE_RECEIVED,SET_CURRENT_CHAT } from "../actions/chatActions";
+import { CREATE_CHAT, FETCH_CHATS,MESSAGE_RECEIVED,SET_CURRENT_CHAT } from "../actions/chatActions";
 
 
 import { FRIENDS_ONLINE, FRIEND_ONLINE, FRIEND_OFFLINE ,SET_SOCKET } from "../actions/chatActions";
@@ -197,6 +197,16 @@ const chatReducer = (state=initialState,action)=>{
                 scrollBottom
             }
 
+        }
+
+        case CREATE_CHAT :{
+            console.log("pyaload" ,payload);
+            console.log("chats look like this", state.chats);
+
+            return {
+                ...state,
+                chats:[...state.chats, ...[payload]]
+            }
         }
 
 
