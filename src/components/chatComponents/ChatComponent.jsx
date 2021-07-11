@@ -44,13 +44,15 @@ const Chat = ({...props}) => {
     return(
         <>
         <Navbar />
-
-        <div style={{display:"flex", height:"80vh"}} >
-            <FriendList />
-            <Messenger />
+        <div style={{width:"80%",margin:"auto"}}>
+            <div style={{display:"flex", height:"80vh"}} >
+                <FriendList />
+                <Messenger />
+                
+            </div>
             
         </div>
-        
+
         </>
         
 

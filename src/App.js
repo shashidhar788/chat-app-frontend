@@ -12,7 +12,7 @@ function App() {
   return (
     <Router>
       <div className="App">
-        <h2> Chat App</h2>
+        
         <Switch>
           {/*<Route exact path='/' component={Chat} />*/}
           <Landing exact path='/' component={Chat} />

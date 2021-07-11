@@ -53,10 +53,14 @@
             box-sizing: border-box;
         }
         button{
-            background:rgb(176, 59, 199);
+            border: none;
+            background-color: $bg-main;
             color: white;
-            font-size: 1.2rem;
+            width: 60px;
+            padding: 5px;
             border-radius: 10px;
+            cursor: pointer;
+            font-weight: 500;
             
         }
     }

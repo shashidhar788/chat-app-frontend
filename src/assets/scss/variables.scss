@@ -1,4 +1,16 @@
-$bg-main: #793EDD;
+$bg-main: #e24444;
 $bg-light: #E2D6F8;
 $danger: red;
 $success: green;
+
+
+button {
+    border: none;
+    background-color: $bg-main;
+    color: white;
+    width: 60px;
+    padding: 5px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 500;
+}

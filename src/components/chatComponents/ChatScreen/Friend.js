@@ -23,9 +23,14 @@ const Friend = ({chat,click}) =>{
     return (
         <div  onClick={click} className={`friend-list ${isChatOpened()}`}>
             <div className="friend-info">
-                 <img width='40' height='40' alt = 'User avatar' src="https://www.svgrepo.com/show/36350/user.svg" style={{border:"1px"}}/>                 
-                <h4 className='m-0'><span>{chat.Users[0].firstname} {chat.Users[0].lastname}</span></h4>
+                <img width='40' height='40' alt = 'User avatar' src="https://www.svgrepo.com/show/36350/user.svg" style={{border:"1px"}}/>                 
+                
+                <div className='m-0'><span><h4>{chat.Users[0].firstname} {chat.Users[0].lastname}</h4></span>
+                
                 <p className='m-0'>{lastMessage()}</p>
+                
+                </div>
+                
             </div>
             
             <div className="friend-status">
@@ -33,7 +38,7 @@ const Friend = ({chat,click}) =>{
                 <span className={`online-status ${userStatus(chat.Users[0])}`}> </span>
             
             </div>
-
+            
             
         </div>
     )

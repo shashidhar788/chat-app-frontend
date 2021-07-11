@@ -100,17 +100,7 @@ const MessageInput = ({chat}) => {
         <div id="input-container">
             <div id="image-upload-container">
 
-                <div id="image-upload">
-                    {
-                        image.name?
-                        <div id="image-details">
-                            <p className='m-0'>{image.name}</p>
-                            <button onClick={(e)=>handleImageUpload(e)}>upload image</button>
-                            <button onClick={()=>setImage('')}>cancel</button>
-                        </div> : null
-                    }
-                    <button onClick={()=>fileUpload.current.click()}> upload image</button>
-                </div>
+                
 
 
 
@@ -118,11 +108,23 @@ const MessageInput = ({chat}) => {
             <div id="message-input">
                 <input type='text' value={message} onChange={e=>handleChange(e)} onKeyDown={e=>handleKeyDown(e)} placeholder="Type your message here" />
                 <button>Send</button>
+                <input id="chat-image" ref={fileUpload} type='file' onChange={(e)=>setImage(e.target.files[0])}></input>
+                <div id="image-upload">
+                    {
+                        image.name?
+                        <div id="image-details">
+                            <p className='m-0'>{image.name}</p>
+                            <button onClick={(e)=>handleImageUpload(e)}>upload</button>
+                            <button onClick={()=>setImage('')}>cancel</button>
+                        </div> : null
+                    }
+                    <button onClick={()=>fileUpload.current.click()}> upload image</button>
+                </div>
                 {/* <FontAwesomeIcon  className='fa-icon' icon={['far','smile']}/> */}
             </div>
             {/* <h4>Chat input goes here</h4> */}
 
-            <input id="chat-image" ref={fileUpload} type='file' onChange={(e)=>setImage(e.target.files[0])}></input>
+            
         </div>
     )
 }

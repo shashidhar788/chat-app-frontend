@@ -1,6 +1,14 @@
 $danger: red;
 $success: green;
 
+h4{
+    margin: 0px;
+}
+
+p{
+    font-size: 0.8rem;
+}
+
 .friend-list {
     display: flex;
     justify-content: space-between;
@@ -8,6 +16,7 @@ $success: green;
     cursor: pointer;
     flex-direction: column;
     min-width: fit-content;
+    border-bottom: rgb(225, 223, 223) solid 1px;
 
     @media (min-width: 800px) {
         flex-direction: row;
@@ -28,6 +37,8 @@ $success: green;
             flex-direction: column
         }
     }
+
+    
 
     .friend-status {
         display: flex;
