@@ -42,7 +42,7 @@ const Login = ({history}) => {
 
     return(
         <div>
-            <h2> Chat Login</h2>
+            <h2>Login</h2>
             <div>
                 <form onSubmit={submitForm}>
                     <div>

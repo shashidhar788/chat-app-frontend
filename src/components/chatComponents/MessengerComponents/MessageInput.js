@@ -39,7 +39,7 @@ const MessageInput = ({chat}) => {
 
             sendMessage(imageUpload);
             setMessage(msg=>{
-                console.log("setting message to empty string")
+                //console.log("setting message to empty string")
                 return '';
             
             });
@@ -59,12 +59,12 @@ const MessageInput = ({chat}) => {
         formData.append('id',chat.id);
         formData.append('image',image);
         
-        console.log("hadling image upload form input")
+        //console.log("hadling image upload form input")
         //sending via chat service image upload
         ChatService.uploadImages(formData)
         .then(data=>{
 
-            console.log("received from post method " , data.data.data.url);
+            //console.log("received from post method " , data.data.data.url);
             if(!data) throw new Error("no data from post")
             sendMessage(data.data.data.url);
         })
