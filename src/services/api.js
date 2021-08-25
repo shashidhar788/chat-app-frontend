@@ -4,8 +4,8 @@ import store from '../store';
 import { logout } from '../store/actions/authActions';
 
 const API  = axios.create({
-//    baseURL:'https://db-for-fastext.herokuapp.com',
-    baseURL:'http://localhost:3001',
+    baseURL:'https://db-for-fastext.herokuapp.com',
+    //baseURL:'http://localhost:3001',
 
     headers:{
 

@@ -13,7 +13,7 @@ const Navbar = () =>{
     const dispatch2 = useDispatch();
 
     const logoutClick = () =>{
-        console.log("logging out user", user.firstname)
+        //console.log("logging out user", user.firstname)
         dispatch(logout());
 
     }
@@ -32,16 +32,16 @@ const Navbar = () =>{
         e.preventDefault();
         const updateFormObject = {firstname,lastname,email};
         if(password.length>0) updateFormObject.password = password;
-        //console.log(updateFormObject);
+        ////console.log(updateFormObject);
 
         const formData = new FormData();
 
         for( const key in updateFormObject ){
-            console.log(key,updateFormObject[key]);
+            //console.log(key,updateFormObject[key]);
             formData.append(key,updateFormObject[key]);
         }
 
-        //console.log("Update called", formData);
+        ////console.log("Update called", formData);
 
         dispatch(updateProfile(updateFormObject))
     }
@@ -107,7 +107,7 @@ const Navbar = () =>{
                     
                     </Fragment>
                     <Fragment key="footer">
-                        Footer
+                        (You can update password too!)
                     </Fragment>
                     
                 </Modal>

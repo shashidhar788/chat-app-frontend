@@ -16,7 +16,7 @@ const Register = ({history}) => {
     }
     return(
         <div>
-        <h2> Registration Page</h2>
+        <h2> Registration</h2>
         <div>
             <form onSubmit={submitForm}>
                 <div>
